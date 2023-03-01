@@ -66,3 +66,15 @@ export const act_del_product = (idDel) => {
     payload:idDel
   }
 }
+export const act_add_product = (newProduct) => {
+  return {
+    type: actionTypes.ADD_PRODUCT,
+    payload:newProduct
+  }
+}
+export const act_update_product = (updateProduct) => {
+  return {
+    type: actionTypes.UPDATE_PRODUCT,
+    payload: updateProduct
+  }
+}

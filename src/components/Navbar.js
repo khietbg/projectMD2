@@ -7,8 +7,7 @@ import { logout } from "../redux/action";
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  console.log(user);
+  const user = useSelector(state => state.user);
 
   const handleLogout = () => {
     dispatch(logout());

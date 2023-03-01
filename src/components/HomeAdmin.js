@@ -9,8 +9,8 @@ const HomeAdmin = () => {
   return (
     <>
       <div
-        className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
-        style={{ width: 200, height: "100vh" }}
+        className="d-flex position-fixed top-0 bottom-0 l-0 flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark"
+        style={{ width: 200, left: 0 }}
       >
         <a className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <svg className="bi me-2" width={40} height={32}></svg>

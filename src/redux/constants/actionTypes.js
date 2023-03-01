@@ -13,3 +13,5 @@ export const DEL_USER = "DEL_USER";
 export const GET_PRODUCT = "GET_PRODUCT";
 export const PRODUCT_SUCCESS = "PRODUCT_SUCCESS";
 export const DEL_PRODUCT = "DEL_PRODUCT";
+export const ADD_PRODUCT = "ADD_PRODUCT "
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT"

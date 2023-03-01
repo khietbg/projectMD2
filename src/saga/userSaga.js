@@ -51,3 +51,19 @@ export const DEL_PRODUCT_SAGA = function* (action) {
     console.log(error);
   }
 }
+export const ADD_PRODUCT_SAGA =function* (action) {
+  try {
+    yield call(productSevice.ADD_PRODUCT_SEVICE, action.payload)
+    yield GET_PRODUCT_SAGA()
+  } catch (error) {
+    console.log(error);
+  }
+}
+export const UPDATE_PRODUCT_SAGA = function* (action) {
+  try {
+    yield call(productSevice.UPDATE_PRODUCT_SEVICE, action.payload)
+    yield GET_PRODUCT_SAGA()
+  } catch (error) {
+    console.log(error);
+  }
+}

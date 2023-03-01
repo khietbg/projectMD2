@@ -10,6 +10,8 @@ export const rootSaga = function* () {
         takeLatest(actionTypes.DEL_USER, userSaga.USER_DEL_SAGA),
         // product
         takeLatest(actionTypes.GET_PRODUCT,userSaga.GET_PRODUCT_SAGA),
-        takeLatest(actionTypes.DEL_PRODUCT,userSaga.DEL_PRODUCT_SAGA)
+        takeLatest(actionTypes.DEL_PRODUCT, userSaga.DEL_PRODUCT_SAGA),
+        takeLatest(actionTypes.ADD_PRODUCT,userSaga.ADD_PRODUCT_SAGA),
+        takeLatest(actionTypes.UPDATE_PRODUCT,userSaga.UPDATE_PRODUCT_SAGA)
     ])
 }

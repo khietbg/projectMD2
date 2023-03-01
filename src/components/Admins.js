@@ -9,7 +9,7 @@ const Admins = () => {
       style={{ justifyContent: "center", alignItems: "center" }}
     >
       <HomeAdmin />
-      <div className="w-100 h-100">
+      <div style={{ paddingLeft: "200px" }} className="w-100 h-100">
         <Outlet />
       </div>
     </div>
