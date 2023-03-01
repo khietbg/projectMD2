@@ -279,8 +279,8 @@ const Register = () => {
                             className="form-check-label"
                             htmlFor="form2Example3"
                           >
-                            I agree all statements in{" "}
-                            <a href="#!">Terms of service</a>
+                            you have acount{" "}
+                            <Link to="/login">Login</Link>
                           </label>
                         </div>
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
