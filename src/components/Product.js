@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { act_get_product } from "../redux/action";
 import { useEffect } from "react";
+
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -53,8 +54,9 @@ const Product = () => {
                       </div>
                       <div className="product-price">
                         <span className="product-price-item">
-                          {product.price} đ
+                          {product.price} $
                         </span>
+                        <button className="btn btn-success">AddToCart</button>
                       </div>
                       <div className="product-new-list">New</div>
                     </div>

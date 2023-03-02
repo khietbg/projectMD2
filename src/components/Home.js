@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Event from "./Event";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -8,8 +9,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <Product />
-      <Event />
+      <Outlet/>
       <Footer />
     </>
   );
