@@ -35,7 +35,10 @@ const Login = () => {
   }, [account, error]);
 
   return (
+    <div>
+      <h1 style={{textAlign:"center"}} className="text-primary fs-1 mt-5">LOGIN FORM</h1>
     <div className="d-flex justify-content-center  ">
+      
       <form className="form-login ">
         {/* Email input */}
         <div className="form-outline mb-4">
@@ -117,7 +120,8 @@ const Login = () => {
           </button>
         </div>
       </form>
-    </div>
+      </div>
+      </div>
   );
 };
 

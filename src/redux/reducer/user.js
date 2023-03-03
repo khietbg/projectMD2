@@ -4,7 +4,7 @@ const initState = {};
 export const user = (state = initState, action) => {
   switch (action.type) {
       case LOGIN_SUCCESS:
-          console.log(action.payload);
+          
           return action.payload;
       case USER_LOGOUT:
           state={}

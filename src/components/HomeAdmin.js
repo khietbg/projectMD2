@@ -21,7 +21,7 @@ const HomeAdmin = () => {
           <li>
             <NavLink
               className="text-white side-bar-item fs-3"
-              to={"/admin/manageruser"}
+              to={"/admin"}
             >
               <i className="bi bi-person-circle"></i>
               User Manager
@@ -66,14 +66,6 @@ const HomeAdmin = () => {
                 onClick={() => dispatch(logout)}
               >
                 LogOut
-              </a>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <a className="dropdown-item fs-4" href="/">
-                Homne
               </a>
             </li>
           </ul>

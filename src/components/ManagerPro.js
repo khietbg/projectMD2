@@ -9,6 +9,8 @@ import {
   act_update_product,
 } from "../redux/action";
 
+let quantity = 1;
+
 const ManagerPro = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -36,7 +38,7 @@ const ManagerPro = () => {
     if (name.trim() === "" || price.trim() === "" || imageUrls.trim() === "") {
       setErrMessenger("vui lòng điền đầy đủ thông tin sản phẩm");
     } else {
-      dispatch(act_add_product({ name, price, imageUrls }));
+      dispatch(act_add_product({ name, price, imageUrls}));
     }
     setImageUrls("");
     setName("");
@@ -93,7 +95,7 @@ const ManagerPro = () => {
         <button className="btn btn-success" onClick={handleAdd}>
           CreateProduct
         </button>
-        <button onClick={handleUpdatePro}>update</button>
+        <button onClick={handleUpdatePro} className="btn btn-primary">update</button>
       </div>
       <h2 style={{ textAlign: "center" }}>ManagerPro</h2>
 

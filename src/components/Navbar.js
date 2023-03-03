@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { logout } from "../redux/action";
+import { users } from "../redux/reducer/users";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -12,18 +13,26 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
+  const handleToCart = () => {
+    if (user.fullname) {
+      navigate("/cart")
+    } else {
+      alert("vui lòng đăng nhập trước khi vào giỏ hàng")
+      navigate("/login")
+    }
+  }
   return (
     <div>
       <div className="nav d-flex justify-content-center bg-light">
         <div className="nav-pc">
           <div className="navigation">
-            <a href="" className="navigation-logo">
+            <Link to={'/'} className="navigation-logo">
               <img
                 className="navigation-logo-img"
                 src={require("../img/logo-header/cửa-hàng-giày-sneaker-chính-hàng-uy-tín-nhất-dến-king-shoes-authenti-hcm-6.png")}
                 alt=""
               />
-            </a>
+            </Link>
           </div>
           <div className="nav-category">
             <ul className="category-pc">
@@ -116,10 +125,10 @@ const Navbar = () => {
                 <span className="header-check">
                   <i className="fas fa-users" />
                   {user.fullname}
-                  <button onClick={handleLogout}>LogOut</button>
+                  <button onClick={handleLogout} className="btn btn-info">LogOut</button>
                 </span>
               ) : (
-                <Link to={"/login"} className="header-check">
+                <Link to={"/login"} className="header-check btn btn-primary">
                   <i className="fas fa-users" />
                   LOGIN
                 </Link>
@@ -132,9 +141,9 @@ const Navbar = () => {
               <a href="" className="header-hotline">
                 0909300746
               </a>
-              <Link to={"/cart"}>
-                <i className="bi bi-bag-check-fill fs-1 mx-4 text-danger"></i>
-              </Link>
+              <button onClick={handleToCart}>
+                <i className="bi bi-bag-check-fill fs-1 mx-4 text-danger border-0"></i>
+              </button>
             </div>
           </div>
         </header>

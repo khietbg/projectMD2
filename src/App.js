@@ -27,8 +27,8 @@ function App() {
       
       <Route path="/admin" element={<Admins />}>
         {/* <Route index/> */}
+        <Route index element={<ManagerUser />} />
         <Route path="managerpro" element={<ManagerPro />} />
-        <Route path="manageruser" element={<ManagerUser />} />
       </Route>
       
     </Routes>

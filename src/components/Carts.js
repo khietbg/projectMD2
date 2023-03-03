@@ -1,7 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { act_del_cart, act_get_cart, logout } from "../redux/action";
+import Cart from "./Cart";
 
 const Carts = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(act_get_cart());
+  }, []);
+    const carts = useSelector((state) => state.carts);
+    const user = useSelector(state => state.user)
+    console.log(user);
+  const handleDelAlll = () => {
+    carts.forEach((cart) => {
+      dispatch(act_del_cart(cart.id));
+    });
+      dispatch(logout())
+    alert("successful payment thank you");
+    navigate("/");
+  };
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#d2c9ff" }}>
       <b>
@@ -22,43 +41,15 @@ const Carts = () => {
                         <h2 className="fw-bold mb-0 text-black">
                           Shopping Cart
                         </h2>
-                        <h5 className="mb-0 text-muted">3 items</h5>
-
-                        {/* cart item start*/}
+                        <h5 className="mb-0 text-muted">
+                          {carts.length} items
+                        </h5>
                       </div>
                       <hr className="my-4" />
-                      <div className="row mb-4 d-flex justify-content-between align-items-center">
-                        <div className="col-md-2 col-lg-2 col-xl-2">
-                          <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img7.webp"
-                            className="img-fluid rounded-3"
-                            alt="Cotton T-shirt"
-                          />
-                        </div>
-                        <div className="col-md-3 col-lg-3 col-xl-3">
-                          <h4 className="text-black mb-0">product name</h4>
-                        </div>
-                        <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
-                          <input
-                            id="form1"
-                            name="quantity"
-                            min={0}
-                            Value={1}
-                            type="number"
-                            className="form-control form-control-sm"
-                          />
-                        </div>
-                        {/* cart item and */}
-                        <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h6 className="mb-0">$</h6>
-                        </div>
-                        <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <button className="btn btn-warning">Update</button>
-                        </div>
-                        <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <button className="btn btn-danger">Delete</button>
-                        </div>
-                      </div>
+                      {carts?.map((cart, index) => (
+                        <Cart key={cart.id} cart={cart} index={index} />
+                      ))}
+
                       <hr className="my-4" />
                       <div className="pt-5">
                         <h6 className="mb-0">
@@ -75,13 +66,54 @@ const Carts = () => {
                       <h3 className="fw-bold mb-5 mt-2 pt-1">Summary</h3>
                       <hr className="my-4" />
                       <div className="d-flex justify-content-between mb-4">
-                        <h4 className="text-uppercase">items 3</h4>
-                        <h4>222 $</h4>
+                        <h4 className="text-uppercase">items {carts.length}</h4>
+                        <h4>
+                          {carts.reduce(
+                            (sum, item) => sum + item.price * item.quantity,
+                            0
+                          )}{" "}
+                          $
+                        </h4>
+                      </div>
+
+                     
+                      <hr className="my-4" />
+                      <div className="d-flex justify-content-between mb-4">
+                        <h4 className="text-uppercase">Fullname</h4>
+                        <h4>
+                          {user.fullname}
+                        </h4>
+                      </div>
+
+                   
+                      <hr className="my-4" />
+                      <div className="d-flex justify-content-between mb-4">
+                        <h4 className="text-uppercase">Email</h4>
+                        <h4>
+                         {user.email}
+                        </h4>
+                      </div>
+
+                      
+                      <hr className="my-4" />
+                      <div className="d-flex justify-content-between mb-4">
+                        <h4 className="text-uppercase">Address</h4>
+                        <h4>
+                          {user.address}
+                        </h4>
+                      </div>
+                      <hr className="my-4" />
+                      <div className="d-flex justify-content-between mb-4">
+                        <h4 className="text-uppercase">Phone</h4>
+                        <h4>
+                         {user.phone}
+                        </h4>
                       </div>
 
                       <hr className="my-4" />
 
                       <button
+                        onClick={() => handleDelAlll()}
                         type="button"
                         className="btn btn-dark btn-block btn-lg"
                         data-mdb-ripple-color="dark"

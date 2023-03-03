@@ -1,15 +1,31 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { act_get_product } from "../redux/action";
+import { act_get_product, act_post_cart } from "../redux/action";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 
 const Product = () => {
+  const navigate= useNavigate()
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(act_get_product());
   }, []);
   const products = useSelector((state) => state.products);
+  const user = useSelector((state)=>state.user)
+  const handleAdd = (product) => {
+    if (user.permissin) {
+      alert("tài khoản admin không thể mua vui lòng đăng ký tài khoản")
+      navigate("/login")
+    } else if (user.fullname) {
+      dispatch(act_post_cart({...product, quantity: 1}))
+    } else {
+       alert("vui lòng đăng nhập trước khi mua hàng")
+    navigate("/login")
+    }
+   
+  }
 
   return (
     <div>
@@ -56,7 +72,7 @@ const Product = () => {
                         <span className="product-price-item">
                           {product.price} $
                         </span>
-                        <button className="btn btn-success">AddToCart</button>
+                        <button className="btn btn-success" onClick={()=>handleAdd(product)}>AddToCart</button>
                       </div>
                       <div className="product-new-list">New</div>
                     </div>

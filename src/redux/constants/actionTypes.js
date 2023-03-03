@@ -15,3 +15,10 @@ export const PRODUCT_SUCCESS = "PRODUCT_SUCCESS";
 export const DEL_PRODUCT = "DEL_PRODUCT";
 export const ADD_PRODUCT = "ADD_PRODUCT "
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
+
+// cart action
+export const GET_CART = "GET_CART"
+export const GET_CART_SUCCESS = "GET_CART_SUCCESS";
+export const POSR_CART = "POSR_CART"
+export const UPDATE_CART="UPDATE_CART"
+export const DEL_CART="DEL_CART"
